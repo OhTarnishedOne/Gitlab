@@ -60,21 +60,22 @@ def run():
     # Initiates login process. If pin verified, returns validated account.
     account = login()
 
-    # Initiates ATM action: check balance, deposit or withdrawal.
-    action = main_menu()
+    while True:
+        # Initiates ATM action: check balance, deposit or withdrawal.
+        action = main_menu()
 
-    # Processes the chosen action
-    if action == "check balance":
-        sys.exit(f"Your current account balance is {account['balance']: .2f}")
-    elif action == "deposit":
-        account = make_deposit(account)
-    else:
-        account = make_withdrawal(account)
+        # Processes the chosen action
+        if action == "check balance":
+            sys.exit(f"Your current account balance is {account['balance']: .2f}")
+        elif action == "deposit":
+            account = make_deposit(account)
+        else:
+            account = make_withdrawal(account)
 
-    # Prints the adjusted balance.
-    print(
-        f"Thank you for your {action}. Your adjusted balance is ${account['balance']: .2f}."
-    )
+        # Prints the adjusted balance.
+        print(
+            f"Thank you for your {action}. Your adjusted balance is ${account['balance']: .2f}."
+        )
 
     # @TODO: As a bonus, try writing the adjusted account balance back to the CSV file.
 

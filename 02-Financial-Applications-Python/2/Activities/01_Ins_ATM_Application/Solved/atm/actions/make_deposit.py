@@ -18,7 +18,9 @@ def make_deposit(account):
     """
     # Use questionary to capture the deposit amount.
     amount = questionary.text("How much would you like to deposit?").ask()
-    amount = float(amount)
+    if type(amount) != float:
+        sys.exit(f"This is not a valid deposit amount. Please try again.")
+    
 
    # Validates amount of deposit. If true processes deposit, else returns error.
     if amount > 0.0:
